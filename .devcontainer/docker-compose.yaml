@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  tex:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - ARG_USER_NAME=${USER_NAME}
+        - ARG_USER_UID=${USER_UID}
+        - ARG_USER_GID=${USER_GID}
+        - ARG_USER_HOME=${USER_HOME}
+        - ARG_USER_WORKSPACE=${USER_WORKSPACE}
+
+    volumes:
+      - ..:${USER_WORKSPACE}
+      - ~/.gitconfig:${USER_HOME}/.gitconfig
+      - ${USER_WORKSPACE}/node_modules
+
+    tty: true

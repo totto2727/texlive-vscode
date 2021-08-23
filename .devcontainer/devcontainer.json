@@ -1,0 +1,103 @@
+{
+    "name": "tex",
+    "dockerComposeFile": "docker-compose.yaml",
+    "service": "tex",
+    "remoteUser": "vscode",
+    "workspaceFolder": "/home/vscode/workspace",
+    "extensions": [
+        "taichi.vscode-textlint",
+        "james-yu.latex-workshop",
+        "mosapride.zenkaku",
+        "sohamkamani.code-eol"
+    ],
+    "settings": {
+        "textlint.autoFixOnSave": true,
+        "textlint.run": "onType",
+        "latex-workshop.latex.autoBuild.run": "onFileChange",
+        "latex-workshop.latex.outDir": "out",
+        "[tex]": {
+            "editor.suggest.snippetsPreventQuickSuggestions": false,
+            "editor.tabSize": 2
+        },
+        "[latex]": {
+            "editor.suggest.snippetsPreventQuickSuggestions": false,
+            "editor.tabSize": 2
+        },
+        "[bibtex]": {
+            // インデント幅を2にする
+            "editor.tabSize": 2
+        },
+        "latex-workshop.intellisense.package.enabled": true,
+        "latex-workshop.latex.clean.fileTypes": [
+            "*.aux",
+            "*.bbl",
+            "*.blg",
+            "*.idx",
+            "*.ind",
+            "*.lof",
+            "*.lot",
+            "*.out",
+            "*.toc",
+            "*.acn",
+            "*.acr",
+            "*.alg",
+            "*.glg",
+            "*.glo",
+            "*.gls",
+            "*.ist",
+            "*.fls",
+            "*.log",
+            "*.fdb_latexmk",
+            "*.snm",
+            "*.nav",
+            "*.dvi",
+            "*.synctex.gz"
+        ],
+        "latex-workshop.latex.recipes": [
+            {
+                "name": "latexmk 🔃",
+                "tools": [
+                    "latexmk"
+                ]
+            },
+            {
+                "name": "latexmk (latexmkrc)",
+                "tools": [
+                    "latexmk_rconly"
+                ]
+            },
+            {
+                "name": "latexmk (lualatex)",
+                "tools": [
+                    "lualatexmk"
+                ]
+            },
+            {
+                "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+                "tools": [
+                    "pdflatex",
+                    "bibtex",
+                    "pdflatex",
+                    "pdflatex"
+                ]
+            }
+        ],
+        "latex-workshop.latex.tools": [
+            {
+                "name": "latexmk",
+                "command": "latexmk",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "-pdfdvi",
+                    "-outdir=%OUTDIR%",
+                    "%DOC%"
+                ]
+            }
+        ],
+        "editor.renderControlCharacters": true,
+        "editor.renderWhitespace": "all",
+        "latex-workshop.view.pdf.viewer": "browser"
+    }
+}
